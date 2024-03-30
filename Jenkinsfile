@@ -12,11 +12,24 @@ pipeline {
             steps {
                 sh "mvn test"
             }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                    jacoco execPattern: 'target/jacoco.exec'
+                }
+            }
         }
         stage('Mutation Test - PIT') {
             steps {
                 sh "echo START PIT TESTING"
                 sh "mvn org.pitest:pitest-maven:mutationCoverage"
+            }
+        }
+        stage('SonarQube - SAST') {
+            steps {
+                withsonarQubeEnv('SonarQube') {
+                    sh "mvn sonar"
+                }
             }
         }
     }
