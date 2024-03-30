@@ -24,5 +24,14 @@ pipeline {
                 sh "mvn org.pitest:pitest-maven:mutationCoverage"
             }
         }
+        stage('Docker Build and Push') {
+            steps {
+                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+                    sh 'printenv'
+                    sh 'docker build -t lsramanjaneyulu/simplecalculatorapp: ""$GIT_COMMT"" .'
+                    sh 'docker push lsramanjaneyulu/simplecalculatorapp: ""$GIT_COMMT""'
+                }
+            }
+        }
     }
 }
