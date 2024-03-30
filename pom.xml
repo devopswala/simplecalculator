@@ -44,45 +44,46 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
-                            <mainClass>com.cal.MainClass</mainClass>
+                            <!-- Update this line with your actual main class -->
+                            <mainClass>com.cal.SimpleCalculator</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
-            <!--                   Jacoco Plugin                   -->
+            <!-- JaCoCo Plugin -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.7</version>
                 <executions>
-                 <execution>
-                  <goals>
-                   <goal>prepare-agent</goal>
-                  </goals>
-                 </execution>
-                 <execution>
-                  <id>report</id>
-                  <phase>test</phase>
-                  <goals>
-                   <goal>report</goal>
-                  </goals>
-                 </execution>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
                 </executions>
-               </plugin>
+            </plugin>
 
-               <!--                   PITest Mutation Plugin                   -->
-               <plugin>
+            <!-- PITest Mutation Plugin -->
+            <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.7.3</version>
                 <configuration>
-                 <mutationThreshold>70</mutationThreshold>
-                 <outputFormats>
-                         <outputFormat>XML</outputFormat>
-                         <outputFormat>HTML</outputFormat>
+                    <mutationThreshold>70</mutationThreshold>
+                    <outputFormats>
+                        <outputFormat>XML</outputFormat>
+                        <outputFormat>HTML</outputFormat>
                     </outputFormats>
                 </configuration>
-               </plugin>
+            </plugin>
         </plugins>
     </build>
 </project>
