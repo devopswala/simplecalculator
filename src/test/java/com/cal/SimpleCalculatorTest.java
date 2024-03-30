@@ -5,15 +5,15 @@ import org.junit.Test;
 
 public class SimpleCalculatorTest {
 
+    private SimpleCalculator calculator = new SimpleCalculator();
+
     @Test
     public void testAdd() {
-        SimpleCalculator calculator = new SimpleCalculator();
         assertEquals(5, calculator.add(2, 3));
     }
 
     @Test
     public void testSubtract() {
-        SimpleCalculator calculator = new SimpleCalculator();
         assertEquals(1, calculator.subtract(3, 2));
     }
 }
