@@ -10,8 +10,8 @@ RUN mvn clean package
 FROM openjdk:17
 WORKDIR /app
 # Copy the built JAR file from the builder stage
-COPY --from=builder /app/target/simple-calculator-1.0-SNAPSHOT.jar .
+COPY --from=builder /app/target/simple-calculator-1.0-SNAPSHOT.jar ./app.jar
 # Expose the port the app runs on
 EXPOSE 8081
 # Command to run the application
-CMD ["java", "-jar", "simple-calculator-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]
