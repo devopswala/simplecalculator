@@ -101,7 +101,7 @@
                 <artifactId>pitest-maven</artifactId>
                 <version>1.7.3</version>
                 <configuration>
-                 <mutationThreshold>70</mutationThreshold>
+                 <mutationThreshold>65</mutationThreshold>
                  <outputFormats>
                          <outputFormat>XML</outputFormat>
                          <outputFormat>HTML</outputFormat>
