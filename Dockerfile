@@ -12,6 +12,6 @@ WORKDIR /app
 # Copy the built JAR file from the builder stage
 COPY --from=builder /app/target/simple-calculator-1.0-SNAPSHOT.jar .
 # Expose the port the app runs on
-EXPOSE 8080
+EXPOSE 8081
 # Command to run the application
 CMD ["java", "-jar", "simple-calculator-1.0-SNAPSHOT.jar"]
