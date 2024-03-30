@@ -8,5 +8,15 @@ pipeline {
                 archive 'target/*.jar'
             }
         }
+        stage('Unit Tests - JUnit and JaCoCo'){
+            steps {
+                sh "mvn test"
+            }
+        }
+        stage('Mutation Test - PIT') {
+            steps {
+                sh "mvn org.pitest:pitest-maven:mutationCoverage"
+            }
+        }
     }
 }
