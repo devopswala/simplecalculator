@@ -1,4 +1,4 @@
-package main.java.com.cal;
+package com.cal;
 
 public class SimpleCalculator {
 

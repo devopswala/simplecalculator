@@ -1,4 +1,4 @@
-package test.java.com.cal;
+package com.cal;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
