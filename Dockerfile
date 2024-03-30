@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM maven:3.8.4-openjdk-17 as builder
+FROM maven:3.9.6-openjdk-17 as builder
 WORKDIR /app
 # Copy the project files to the container
 COPY . .
