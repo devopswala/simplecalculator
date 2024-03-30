@@ -3,7 +3,8 @@ package com.cal;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-import main.java.com.cal.SimpleCalculator;
+// Corrected import statement
+import com.cal.SimpleCalculator;
 
 public class SimpleCalculatorTest {
 
