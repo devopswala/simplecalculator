@@ -24,7 +24,6 @@ pipeline {
                 sh "mvn org.pitest:pitest-maven:mutationCoverage"
             }
         }
-    }
         stage('SonarQube - SAST') {
             steps {
                 withSonarQubeEnv('sonarqube') {
@@ -34,6 +33,7 @@ pipeline {
                     waitForQualityGate abortPipeline: true
                 }
             }
+        }
         stage('Docker Build and Push') {
             steps {
                 withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
