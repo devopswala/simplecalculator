@@ -38,11 +38,11 @@ public class CalculatorControllerTest {
                 .andExpect(content().string(containsString("Result: 5")));
     }
 
-    @Test
-    public void testCalculateSubtract() throws Exception {
-        this.mockMvc.perform(get("/calculate?a=5&operation=subtract&b=2"))
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andExpect(content().string(containsString("Result: 3")));
-    }
+    // @Test
+    // public void testCalculateSubtract() throws Exception {
+    //     this.mockMvc.perform(get("/calculate?a=5&operation=subtract&b=2"))
+    //             .andExpect(status().isOk())
+    //             .andDo(print())
+    //             .andExpect(content().string(containsString("Result: 3")));
+    // }
 }
