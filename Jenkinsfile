@@ -24,6 +24,15 @@ pipeline {
                 sh "mvn org.pitest:pitest-maven:mutationCoverage"
             }
         }
+        stage('SonarQube Analysis') {
+            steps {
+                   sh "mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=simplecalculator \
+                        -Dsonar.projectName='simplecalculator' \
+                        -Dsonar.host.url=http://knowledgeacademy.eastus.cloudapp.azure.com:9000 \
+                        -Dsonar.login=sqp_8da3005f4d513ff0fc9c78b308916bf5fd21d2ab"
+                }
+        }
         stage('Docker Build and Push') {
             steps {
                 withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
@@ -40,15 +49,6 @@ pipeline {
                     sh "kubectl apply -f k8s_deployment_service.yaml"
                 }
             }
-        }
-        stage('SonarQube Analysis') {
-            steps {
-                   sh "mvn clean verify sonar:sonar \
-                        -Dsonar.projectKey=simplecalculator \
-                        -Dsonar.projectName='simplecalculator' \
-                        -Dsonar.host.url=http://knowledgeacademy.eastus.cloudapp.azure.com:9000 \
-                        -Dsonar.login=sqp_8da3005f4d513ff0fc9c78b308916bf5fd21d2ab"
-                }
         }
  }
 }
