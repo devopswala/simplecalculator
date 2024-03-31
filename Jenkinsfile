@@ -24,15 +24,15 @@ pipeline {
                 sh "mvn org.pitest:pitest-maven:mutationCoverage"
             }
         }
-        stage('SonarQube Analysis') {
+        stage('SonarQube - SAST') {
             steps {
-                   sh "mvn clean verify sonar:sonar \
-                        -Dsonar.projectKey=simplecalculator \
-                        -Dsonar.projectName='simplecalculator' \
-                        -Dsonar.host.url=http://knowledgeacademy.eastus.cloudapp.azure.com:9000 \
-                        -Dsonar.login=sqp_8da3005f4d513ff0fc9c78b308916bf5fd21d2ab"
+                withSonarQubeEnv('sonarqube') {
+                   sh "mvn clean verify sonar:sonar -Dsonar.projectKey=simplecalculator -Dsonar.projectName='simplecalculator' -Dsonar.host.url=http://knowledgeacademy.eastus.cloudapp.azure.com:9000 -Dsonar.login=sqp_8da3005f4d513ff0fc9c78b308916bf5fd21d2ab"
                 }
-        }
+                timeout(time: 2, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
         stage('Docker Build and Push') {
             steps {
                 withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
@@ -51,4 +51,5 @@ pipeline {
             }
         }
  }
+}
 }
