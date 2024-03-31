@@ -24,9 +24,9 @@ public class CalculatorControllerTest {
 
     @Test
     public void testCalculateAdd() throws Exception {
-        this.mockMvc.perform(get("/calculate?operation=add&a=1&b=2"))
+        this.mockMvc.perform(get("/calculate?a=2&operation=add&b=3"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Result: 3")));
+                .andExpect(content().string(containsString("Result: 5")));
     }
 
     @Test
