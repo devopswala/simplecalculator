@@ -33,6 +33,7 @@ public class CalculatorControllerTest {
     public void testCalculateSubtract() throws Exception {
         this.mockMvc.perform(get("/calculate?operation=subtract&a=5&b=2"))
                 .andExpect(status().isOk())
+                .andDo(print())
                 .andExpect(content().string(containsString("Result: 3")));
     }
 }
