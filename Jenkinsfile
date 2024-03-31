@@ -24,6 +24,7 @@ pipeline {
                 sh "mvn org.pitest:pitest-maven:mutationCoverage"
             }
         }
+    }
         stage('SonarQube - SAST') {
             steps {
                 withSonarQubeEnv('sonarqube') {
@@ -50,6 +51,5 @@ pipeline {
                 }
             }
         }
- }
-}
+    }
 }
