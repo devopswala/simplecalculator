@@ -18,6 +18,11 @@ spec:
       containers:
       - image: replace
         name: devsecops-container
+      tolerations:
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+
 ---
 apiVersion: v1
 kind: Service
