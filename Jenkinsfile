@@ -42,8 +42,12 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-             withSonarQubeEnv() {
-                   sh "mvn clean verify sonar:sonar -Dsonar.projectKey=simplecalculator"
-    }
-    }
+            steps {
+                   sh "mvn clean verify sonar:sonar \
+                        -Dsonar.projectKey=simplecalculator \
+                        -Dsonar.host.url=http://knowledgeacademy.eastus.cloudapp.azure.com:9000 \
+                        -Dsonar.login=sqp_b6d856762da8ae02d2cf0041a64f0351f7afb424"
+                }
+        }
+ }
 }
