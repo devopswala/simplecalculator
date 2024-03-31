@@ -1,4 +1,4 @@
-package com.cal
+package com.cal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
