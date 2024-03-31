@@ -14,10 +14,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class CalculatorControllerTest {
 
     private MockMvc mockMvc;
+    private WebApplicationContext context;
 
     @Before
     public void setup() {
-        this.mockMvc = standaloneSetup(new CalculatorController()).build();
+        //this.mockMvc = standaloneSetup(new CalculatorController()).build();
+        this.mockMvc = MockMvcBuilders.WebApplicationContextSetup(context).build();
     }
 
     @Test
