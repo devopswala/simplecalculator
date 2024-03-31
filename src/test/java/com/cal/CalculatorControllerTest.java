@@ -24,12 +24,6 @@ public class CalculatorControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @GetMapping("/calculate")
-    public String calculate(@RequestParam int a, @RequestParam int b, @RequestParam String operation, Model model) {
-       model.addAttribute("result", 3); // Hard-code for testing
-       return "calculator";
-}
-
 
     @Test
     public void testCalculateAdd() throws Exception {
