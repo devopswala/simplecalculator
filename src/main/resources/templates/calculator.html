@@ -6,9 +6,12 @@
 <body>
 <h2>Simple Calculator</h2>
 <form action="/calculate" method="get">
-    <input type="number" name="a" required> +
+    <input type="number" name="a" required>
+    <select name="operation">
+        <option value="add">+</option>
+        <option value="subtract">-</option>
+    </select>
     <input type="number" name="b" required>
-    <input type="hidden" name="operation" value="add">
     <button type="submit">Calculate</button>
 </form>
 <h3>Result: <span th:text="${result}">0</span></h3>
