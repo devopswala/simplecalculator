@@ -45,8 +45,9 @@ pipeline {
             steps {
                    sh "mvn clean verify sonar:sonar \
                         -Dsonar.projectKey=simplecalculator \
+                        -Dsonar.projectName='simplecalculator' \
                         -Dsonar.host.url=http://knowledgeacademy.eastus.cloudapp.azure.com:9000 \
-                        -Dsonar.login=sqp_b6d856762da8ae02d2cf0041a64f0351f7afb424"
+                        -Dsonar.login=sqp_8da3005f4d513ff0fc9c78b308916bf5fd21d2ab"
                 }
         }
  }
